@@ -18,7 +18,7 @@ class GithubRepo {
     var ownerAvatarURL: String?
     var stars: Int?
     var forks: Int?
-    
+    var desc: String?
     
     init(jsonResult: NSDictionary) {
         if let name = jsonResult["name"] as? String {
@@ -27,6 +27,9 @@ class GithubRepo {
         
         if let stars = jsonResult["stargazers_count"] as? Int? {
             self.stars = stars
+        }
+        if let desc = jsonResult["description"] as? String? {
+            self.desc = desc
         }
         
         if let forks = jsonResult["forks_count"] as? Int? {

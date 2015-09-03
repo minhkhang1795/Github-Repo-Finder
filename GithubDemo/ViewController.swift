@@ -34,7 +34,8 @@ class ViewController: UIViewController {
                     "\n\t[Stars: \(repo.stars!)]" +
                     "\n\t[Forks: \(repo.forks!)]" +
                     "\n\t[Owner: \(repo.ownerHandle!)]" +
-                    "\n\t[Avatar: \(repo.ownerAvatarURL!)]")
+                   // "\n\t[Avatar: \(repo.ownerAvatarURL!)]" +
+                    "\n\t[Description: \(repo.desc!)]")
             }
             MBProgressHUD.hideHUDForView(self.view, animated: true)
         }, error: { (error) -> Void in
