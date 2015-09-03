@@ -8,12 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var searchBar: UISearchBar!
     var searchSettings = GithubRepoSearchSettings()
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.reloadData()
         
         // initialize UISearchBar
         searchBar = UISearchBar()
@@ -25,6 +31,17 @@ class ViewController: UIViewController {
         
         doSearch()
     }
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("repoCell", forIndexPath: indexPath) as! UITableViewCell
+        return cell
+    }
+    
+
     
     private func doSearch() {
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
